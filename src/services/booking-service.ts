@@ -4,10 +4,10 @@ import { TicketStatus } from "@prisma/client"
 
 
 async function getBooking(userId: number){
-    const booking = bookingRepository.findUserId(userId)
-    if(!booking) throw notFoundError()
+  const booking = await bookingRepository.findUserId(userId);
+  if (!booking) throw notFoundError();
 
-    return booking
+  return booking;
 }
 
 async function validateUserBooking(userId: number) {

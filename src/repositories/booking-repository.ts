@@ -2,9 +2,9 @@ import { prisma } from "@/config";
 import { CreateBookingParams, UpdateBookingParams } from "@/protocols";
 
 async function findUserId(userId: number){
-    return prisma.booking.findFirst({
-        where: { userId },
-        include: { Room: true },
+  return prisma.booking.findFirst({
+    where: { userId },
+    include: { Room: true },
       });
 }
 

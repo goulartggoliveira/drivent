@@ -4,14 +4,14 @@ import { Response } from "express";
 import httpStatus from "http-status";
 
 
-async function getBooking(req: AuthenticatedRequest, res: Response){
-    const { userId } = req
+export async function getBooking(req: AuthenticatedRequest, res: Response){
+    const { userId } = req;
     const booking = await bookingService.getBooking(userId);
-
+  
     return res.status(httpStatus.OK).send({
-        id: booking.id,
-        Room: booking.Room
-    })
+      id: booking.id,
+      Room: booking.Room,
+    });
 }
 
 async function postBooking(req: AuthenticatedRequest, res: Response){
