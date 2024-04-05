@@ -14,9 +14,26 @@ async function getBooking(req: AuthenticatedRequest, res: Response){
     })
 }
 
-async function postBooking(req: AuthenticatedRequest, res: Response){}
+async function postBooking(req: AuthenticatedRequest, res: Response){
 
-async function putBooking(req: AuthenticatedRequest, res: Response){}
+    const { userId } = req;
+    const roomId = Number(req.body.roomId);
+  
+    const booking = await bookingService.bookRoomId(userId, roomId);
+  
+    return res.status(httpStatus.OK).send({ bookingId: booking.id });
+}
+
+async function putBooking(req: AuthenticatedRequest, res: Response){
+
+    const { userId } = req;
+  const roomId = Number(req.body.roomId);
+
+  const booking = await bookingService.changeBookingRoomId(userId, roomId);
+
+  return res.status(httpStatus.OK).send({ bookingId: booking.id });
+
+}
 
 
 
